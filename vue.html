@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="张长宇" />
+    <meta name="description" content="张长宇" />
+    <title>张长宇</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <!--重定向<meta http-equiv="refresh" content="0.1;url='D:\CSS3_waplogin\小崔同学处女作\小心心.html'">-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">添加品牌</h3>
+        </div>
+
+        <div class="panel-body form-inline">
+            id:
+            <input type="text" class="form-control" v-model="id">
+            name:
+            <input type="text" class="form-control" v-model="name">
+            添加:
+            <input type="button" value="添加" class="btn btn-primary" @click="add()">
+        </div>
+    </div>
+
+
+
+
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <td>Id</td>
+                <td>Name</td>
+                <td>Ctime</td>
+                <td>Operation</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="item in list " :key="item.id">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.ctime}}</td>
+                <td>
+                    <a href="#">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello Vue.js!',
+            id:" ",
+            name:" ",
+            list: [
+                {id:1,name:"奔驰",ctime: new Date()},
+                {id:2,name:"宝马",ctime: new Date()},
+                {id:3,name:"奥迪",ctime: new Date()},
+                {id:4,name:"法拉利",ctime: new Date()},
+                {id:520,name:"崔艺乞",ctime: new Date()}
+            ]
+        },
+        methods: {
+
+            // -------------------------------------方法
+            add:function () {
+
+                    // 1 获取id和name
+                    // 直接获取
+                    // 2 组织一个对象
+                    // 3 把这个对象 调用数组的相关方法 添加到data上list上
+                    // 在vue中 已经实现数据双向数据绑定 每当修改数据中的data时 vue会监听data中数据的改动 把最新的数据渲染到页面上
+                    var car={id:this.id,name:this.name,ctime:new Date()}
+                    this.list.push(car)
+                    this.name=this.id=" "//清空输入框 赋值顺序是从右向左
+            }
+            // -------------------------------------方法
+            }
+
+    })
+</script>
+</body>
+</html>
